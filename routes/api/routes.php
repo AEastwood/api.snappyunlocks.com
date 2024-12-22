@@ -8,4 +8,15 @@ Route::domain(config('app.domains.api_url'))->group(function () {
             'message' => 'just doing api stuff idk :/'
         ]);
     });
+
+    Route::get('routes', function () {
+        $routes = collect(Route::getRoutes())->map(function ($route) {
+            return [
+                'uri' => $route->uri(),
+                'name' => $route->getName(),
+            ];
+        });
+
+        dump($routes->toArray());
+    });
 });

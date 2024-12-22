@@ -123,4 +123,9 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'domains' => [
+        'admin_url' => env('ADMIN_URL'),
+        'api_url' => env('API_URL'),
+    ]
+
 ];

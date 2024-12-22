@@ -2,8 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return response()->json([
-        'message' => 'Just doing API things idk'
-    ]);
+Route::domain(config('app.domains.api_url'))->group(function () {
+    dd('api');
+    require_once 'api/routes.php';
+});
+
+Route::domain(config('app.domains.admin_url'))->group(function () {
+    dd('admin');
+    require_once 'admin/routes.php';
 });

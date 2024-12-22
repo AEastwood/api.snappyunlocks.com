@@ -9,8 +9,3 @@ Route::domain(config('app.domains.api_url'))->group(function () {
 Route::domain(config('app.domains.admin_url'))->group(function () {
     require_once base_path('routes/admin/routes.php');
 });
-
-//dd(
-//    request()->getHost(),
-//    request()->getPathInfo()
-//);

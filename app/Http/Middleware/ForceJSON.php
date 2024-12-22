@@ -16,7 +16,9 @@ class ForceJSON
     public function handle(Request $request, Closure $next): Response
     {
         if ($request->host() === config('app.domains.api_url')) {
-            $request->headers->set('accept', 'application/json');
+            $request->headers->set('Accept', 'application/json');
+            $request->headers->set('Content-Type', 'application/json');
+            header('X-Powered-By: Django/1.2.1 SVN-13336');
         }
 
         return $next($request);

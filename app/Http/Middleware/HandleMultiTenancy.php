@@ -44,14 +44,10 @@ class HandleMultiTenancy
             "/user/two-factor-secret-key",
         ];
 
-        if ($request->host() !== config('app.domains.api_url')) {
+        if ($request->host() !== config('app.domains.api_url') || !in_array($request->getPathInfo(), $routes)) {
             return $next($request);
         }
 
-        if ($request->host() === config('app.domains.api_url') && in_array($request->getPathInfo(), $routes)) {
-            abort(404, 'not found');
-        }
-
-        return $next($request);
+        abort(404, 'not found');
     }
 }
